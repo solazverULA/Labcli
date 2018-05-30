@@ -1,0 +1,52 @@
+{% extends 'templates/Base/../../base.html' %}
+
+{% block content %}
+<form method="post">
+	{% csrf_token %}
+
+    <div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label >Nombre de usuario</label>
+				<input class="form-control" type="text" name="username">
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label >Correo</label>
+				<input class="form-control" type="text" name="email">
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label >Contraseña</label>
+				<input class="form-control" type="password" name="password1">
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label >Confirmar contraseña</label>
+				<input class="form-control" type="password" name="password2">
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+                <a class= "btn btn-default" href= "{% url 'Paciente:index'%}">Guardar</a>
+
+
+
+			</div>
+		</div>
+	</div>
+
+</form>
+{% endblock %}

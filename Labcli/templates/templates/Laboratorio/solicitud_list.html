@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<td>No. Solicitud</td>
+			<td>Paciente </td>
+			<td>Nombre examen</td>
+			<td>Fecha Solicitud</td>
+			<td>Acciones</td>
+		</tr>
+
+	</thead>
+	<tbody>
+		{% if object_list %}
+		{% for Solicitud in object_list %}
+		<tr>
+			<td>{{ Solicitud.id }}</td>
+			<td>{{ Solicitud.paciente.nombrepa }} {{Solicitud.paciente.apellidoma}}</td>
+			<td>{{ Solicitud.nombre }}</td>
+			<td>{{ Solicitud.fecha_sol }}</td>
+
+			<td>
+				<a class="btn btn-primary" href="#">Editar</a>
+				<a class="btn btn-danger" href="#">Eliminar</a>
+			</td>
+		</tr>
+		{% endfor %}
+
+		{% else %}
+		<h1>No hay registros de solicitudes</h1>
+		{% endif %}
+	</tbody>
+</table>
+
+{% endblock%}
