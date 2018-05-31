@@ -48,7 +48,6 @@ class PacienteForm(forms.ModelForm):
         }
 
 
-
 class SolicitudForm(forms.ModelForm):
     class Meta:
         model = Solicitud
@@ -56,6 +55,7 @@ class SolicitudForm(forms.ModelForm):
         'nombre',
         'fecha_sol',
         ]
+
         labels = {
             'nombre': 'Nombre de examen',
             'fecha_sol': 'Fecha Solicitud',

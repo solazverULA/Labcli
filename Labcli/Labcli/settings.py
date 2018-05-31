@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'App.Laboratorio',
     'App.Paciente',
     'usuario',
+    'home'
 ]
 ...
 
@@ -86,8 +87,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'LABCLI',
-        'USER': 'administrador',
-        'PASSWORD': '12345',
+        'USER': 'postgres',
+        'PASSWORD': '22538371',
         'HOST':'localhost',
         'PORT': 5432,
         'CHARSET': 'UTF8'
@@ -131,11 +132,13 @@ USE_TZ = True
 # static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-STATICFILES_DIR = (os.path.join(BASE_DIR, 'static'),)
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 
 LOGIN_REDIRECT_URL = reverse_lazy('Laboratorio:ver_solicitud')

@@ -1,10 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<section>
+
+{% if user.is_asistente %}
     <form method="post">
         {% csrf_token %}
         {{ form2 }}
         {{ form }}
     <<button type="submit">guardar/</button>
     </form>
+
+     {% else %}
+              <h3>Por favor inicie sesión para continuar. </h3>
+              <a href="{% url 'login' %}" class = "button">Login</a></td>
+{% endif %}
+</section>
 {% endblock %}

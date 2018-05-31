@@ -7,12 +7,7 @@
 	{% block extrastatic %}
 	{% endblock %}
 
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-
 	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 	<title>{% block title %}Document {% endblock %}</title>
 </head>
 <body>
@@ -26,25 +21,8 @@
 		            	<nav class="navbar navbar-default">
 		                	<div class="container-fluid">
 		                  		<div class="navbar-header">
-		                    		<a class="navbar-brand" href="#">Home</a>
-		                  		</div>
-		                  	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		                    	<ul class="nav navbar-nav">
-		                      		<li class="dropdown">
-		                        		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Paciente <span class="caret"></span></a>
-				                        <ul class="dropdown-menu" role="menu">
-				                        </ul>
-		                      		</li>
-			                        <li class="dropdown">
-			                        	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Laboratorio<span class="caret"></span></a>
-
-			                        </li>
-		                    	</ul>
-		                    	<ul class="nav navbar-nav navbar-right">
-		                        	<li class="dropdown">
-		                        		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Opciones<span class="caret"></span></a>
-		                        		<ul class="dropdown-menu" role="menu">
-                                            <li><a href="{#}">Salir</a></li>
+		                    		<a class="navbar-brand" href="{% url 'home:home' %}">Home</a>
+                                    <a class="navbar-brand" href="{% url 'logout' %}">Salir</a></li>
 		                        		</ul>
 		                      		</li>
 		                    	</ul>
@@ -68,7 +46,7 @@
 	{% endblock%}
 </div>
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-	<script src="{% static 'static/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
 
 	{% block extrajs %}
 	{% endblock %}

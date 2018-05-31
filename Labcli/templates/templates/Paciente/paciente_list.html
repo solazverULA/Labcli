@@ -2,6 +2,9 @@
 
 {% block content %}
 
+<section>
+
+{% if user.is_asistente %}
 <table class="table table-bordered">
 	<thead>
 		<tr>
@@ -54,4 +57,10 @@
     	{% endif %}
     </li>
 </ul>
+
+ {% else %}
+              <h3>Por favor inicie sesión para continuar. </h3>
+              <a href="{% url 'login' %}" class = "button">Login</a></td>
+{% endif %}
+</section>
 {% endblock%}
