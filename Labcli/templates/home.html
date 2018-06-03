@@ -72,26 +72,23 @@
               <li><a href="{% url 'home:home' %}">Home</a></li>
               <li><a href="{% url 'home:examenes' %}">Examenes</a></li>
               <li class="has-dropdown">
-                <a href="{% url 'home:servicios' %}">Services</a>
+                <a href="{% url 'home:servicios' %}">Pacientes</a>
                 <ul class="dropdown">
                     <li><a href="{% url 'Paciente:crear_paciente' %}">Crear Paciente</a></li>
-                    <li><a href="{% url 'Paciente:ver_lista' %}">Ver Paciente</a></li>
-                    <li><a href="{% url 'Laboratorio:ver_solicitud' %}">Ver Solicitud</a></li>
-                    <li><a href="{% url 'Laboratorio:crear_solicitud' %}">Crear Solicitud</a></li>
-
-
-
+                    <li><a href="{% url 'Paciente:ver_lista' %}">Ver Lista de Paciente</a></li>
                 </ul>
               </li>
+
+
               <li class="has-dropdown">
-                <a href="#">Dropdown</a>
+                <a href="{% url 'home:servicios' %}">Solicitud de Examen</a>
                 <ul class="dropdown">
-                  <li><a href="#">HTML5</a></li>
-                  <li><a href="#">CSS3</a></li>
-                  <li><a href="#">Sass</a></li>
-                  <li><a href="#">jQuery</a></li>
+                    <li><a href="{% url 'Laboratorio:crear_solicitud' %}">Crear Solicitud</a></li>
+                    <li><a href="{% url 'Laboratorio:ver_solicitud' %}">Ver Solicitudes</a></li>
                 </ul>
               </li>
+
+
                 <li><a href="{% url 'login' %}"></a></li>
                 <li><a href="{% url 'logout' %}">Salir</a></li>
                 <li><a href="{% url 'usuario:registrar' %}">Registrarse</a></li>
@@ -114,7 +111,7 @@
                   </div>
                   <div class="col-md-7 copy animate-box">
                     <h1>LABCLI</h1>
-                    <p>Este es el sitio oficial del Laboratorio Clinico La Inmaculada.</p>
+                    <p>Bienvenido, este es el sitio oficial del Laboratorio Clinico La Inmaculada.</p>
                     <p><a href="http://freehtml5.co" target="_blank" class="btn btn-white">Visit FreeHTML5.co</a></p>
                   </div>
                 </div>

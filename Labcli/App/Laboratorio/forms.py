@@ -51,16 +51,24 @@ class PacienteForm(forms.ModelForm):
 class SolicitudForm(forms.ModelForm):
     class Meta:
         model = Solicitud
+
+
         fields = [
-        'nombre',
         'fecha_sol',
+        'paciente',
+        'examenes',
         ]
 
         labels = {
-            'nombre': 'Nombre de examen',
             'fecha_sol': 'Fecha Solicitud',
+            'paciente': 'Paciente',
+            'examenes': 'Examen'
             }
+
+
+
         widgets = {
-            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
             'fecha_sol': forms.TextInput(attrs={'class': 'form-control'}),
+            'paciente': forms.Select(attrs={'class':'form-control'}),
+            'examenes':forms.CheckboxSelectMultiple(),
             }

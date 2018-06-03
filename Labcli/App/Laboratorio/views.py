@@ -9,6 +9,8 @@ from App.Laboratorio.models import Solicitud
 from App.Paciente.forms import PacienteForm
 from App.Paciente.models import Paciente
 
+from App.examenes.forms import ExamenForm
+
 
 def index_lab(request):
     return HttpResponse("Laboratorio")
@@ -22,30 +24,8 @@ class SolicitudList(ListView):
 class SolicitudCreate(CreateView):
     model = Solicitud
     form_class = SolicitudForm
-    second_form_class = PacienteForm
     template_name = 'templates/Laboratorio/solicitud_form.html'
     success_url = reverse_lazy('Laboratorio:ver_solicitud')
-
-    def get_context_data(self, **kwargs):
-        context = super(SolicitudCreate, self).get_context_data(**kwargs)
-        if 'form' not in context:
-            context['form'] = self.form_class(self.request.GET)
-        if 'form2' not in context:
-            context['form2'] = self.second_form_class(self.request.GET)
-        return context
-
-    def post(self, request, *args, **kwargs):
-        self.object = self.get_object
-        form = self.form_class(request.POST)
-        form2 = self.second_form_class(request.POST)
-        if form.is_valid() and form2.is_valid():
-            Solicitud = form.save(commit=False)
-            Solicitud.paciente = form2.save()
-            Solicitud.save()
-            return HttpResponseRedirect(self.get_success_url())
-        else:
-            return self.render_to_response(self.get_context_data(form=form, form2=form2))
-
 
 class SolicitudUpdate(UpdateView):
     model = Solicitud

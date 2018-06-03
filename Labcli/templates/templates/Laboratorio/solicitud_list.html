@@ -1,6 +1,7 @@
 {% extends "base.html" %}
-
 {% block content %}
+
+
 
 <section>
 
@@ -9,11 +10,9 @@
 <table class="table table-bordered">
 	<thead>
 		<tr>
-			<td>No. Solicitud</td>
 			<td>Paciente </td>
-			<td>Nombre examen</td>
+			<td>Examen </td>
 			<td>Fecha Solicitud</td>
-			<td>Acciones</td>
 		</tr>
 
 	</thead>
@@ -21,11 +20,9 @@
 		{% if object_list %}
 		{% for Solicitud in object_list %}
 		<tr>
-			<td>{{ Solicitud.id }}</td>
-			<td>{{ Solicitud.paciente.nombrepa }} {{Solicitud.paciente.apellidoma}}</td>
-			<td>{{ Solicitud.nombre }}</td>
+			<td>{{ Solicitud.paciente.nombrepa }} {{ Solicitud.paciente.apellidoma}}</td>
+			<td>{{ Solicitud.examenes.nombre}}</td>
 			<td>{{ Solicitud.fecha_sol }}</td>
-
 			<td>
 				<a class="btn btn-primary" href="#">Editar</a>
 				<a class="btn btn-danger" href="#">Eliminar</a>
@@ -46,5 +43,3 @@
 </section>
 
 {% endblock %}
-
-{% endblock%}

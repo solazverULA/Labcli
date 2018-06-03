@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section>
+
+{% if user.is_asistente %}
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<td>Nombre de Examen      </td>
+            <td>Tipo                  </td>
+			<td>precio                </td>
+			<td>Precio Lab </td>
+			<td>Stock </td>
+		</tr>
+
+	</thead>
+	<tbody>
+		{% if object_list %}
+		{% for Examenes in object_list %}
+		<tr>
+			<td>{{ Examenes.nombre }}</td>
+            <td>{{ Examenes.tipo }}</td>
+			<td>{{ Examenes.precio }}</td>
+			<td>{{ Examenes.precio_laboratorio }}</td>
+			<td>{{ Examenes.stock}}</td>
+		</tr>
+		{% endfor %}
+
+		{% else %}
+		<h1>No hay registro de examenes</h1>
+		{% endif %}
+	</tbody>
+</table>
+<ul class="pager">
+	<li>
+		    {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+        </li>
+	<li>
+		{% if page_obj.has_next %}
+     	 <a href="?page={{ page_obj.next_page_number }}">Next</a>
+    	{% endif %}
+    </li>
+</ul>
+
+ {% else %}
+              <h3>Por favor inicie sesión para continuar. </h3>
+              <a href="{% url 'login' %}" class = "button">Login</a></td>
+{% endif %}
+</section>
+{% endblock%}

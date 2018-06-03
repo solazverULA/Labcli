@@ -2,6 +2,7 @@ from django.db import models
 
 #from App.Laboratorio.models import Muestra
 # Create your models here.
+from django.db.models import signals
 
 
 class Paciente(models.Model):
@@ -18,10 +19,5 @@ class Paciente(models.Model):
     telefono = 	models.CharField(max_length=12)
     domicilio = models.TextField()
 
-def __str__(self):
-    return '{} {}'.format(self.nombrepa, self.apellidoma)
-
-#def __unicode__(self):
-    #return '%s' % (self.idcedula)
-
-
+    def __str__(self):
+        return '{} {}'.format(self.nombrepa, self.apellidoma)

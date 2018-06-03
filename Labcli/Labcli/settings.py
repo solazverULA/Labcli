@@ -42,10 +42,11 @@ INSTALLED_APPS = [
     'LABCLI.apps.LabcliConfig',
     'App.Laboratorio',
     'App.Paciente',
+    'App.examenes',
     'usuario',
     'home'
 ]
-...
+
 
 AUTH_USER_MODEL = 'usuario.User'
 

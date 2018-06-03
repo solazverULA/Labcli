@@ -17,9 +17,11 @@ from django.urls import include, path, re_path
 from django.contrib import admin
 from django.contrib.auth.views import login, logout_then_login, password_reset, password_reset_done, password_reset_confirm, password_reset_complete
 from django.views.generic.base import TemplateView
+
 urlpatterns = [
     path('', include('home.urls', namespace='home')),
     path('admin/', admin.site.urls),
+    path('examenes/', include('App.examenes.urls', namespace="Examenes")),
     path('Paciente/', include('App.Paciente.urls', namespace='Paciente')),
     path('Laboratorio/', include('App.Laboratorio.urls', namespace='Laboratorio')),
     path('usuario/', include('usuario.urls', namespace='usuario')),

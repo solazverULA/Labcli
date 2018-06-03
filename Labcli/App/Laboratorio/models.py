@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 from App.Paciente.models import Paciente
-
+from App.examenes.models import Examenes
 
 class Bioanalista(models.Model):
    # IdBioanalista = models.CharField(primary_key=True)
@@ -33,10 +33,11 @@ class Asistente(models.Model):
 
 
 class Solicitud(models.Model):
-    nombre = models.CharField(max_length=50)
     fecha_sol = models.DateField()
     paciente = models.ForeignKey(Paciente, null=True, blank=True, on_delete=models.CASCADE)
     asistente = models.ForeignKey(Asistente, null=True, blank=True, on_delete=models.CASCADE)
+    examenes = models.ManyToManyField(Examenes)
+
 
 class Pago(models.Model):
     modalidad = models.CharField(max_length=50)
@@ -58,3 +59,6 @@ class Resultado(models.Model):
 
 class Muestra(models.Model):
     nombre = models.CharField(max_length=50)
+
+    def __str__(self):
+        return '{}'.format(self.nombre)

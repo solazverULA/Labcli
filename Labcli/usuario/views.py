@@ -15,7 +15,7 @@ class RegistroUsuario(CreateView):
     model = User
     template_name = "templates/usuario/registrar.html"
     form_class = RegistroForm
-    success_url = reverse_lazy('Paciente:ver_lista')
+    success_url = reverse_lazy('home:home')
 
 
 class UserAPI(APIView):
