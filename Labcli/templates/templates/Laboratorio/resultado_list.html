@@ -10,29 +10,35 @@
 <table class="table table-bordered">
 	<thead>
 		<tr>
+			<td>Id</td>
+			<td>Paciente</td>
+			<td>Examenes</td>
+			<td>   Valores</td>
 
-			<td>Paciente </td>
-			<td>Examen </td>
-			<td>Fecha Solicitud</td>
+
 		</tr>
 
 	</thead>
 	<tbody>
 		{% if object_list %}
-		{% for Solicitud in object_list %}
+		{% for Resultado in object_list %}
 		<tr>
-			<td>{{ Solicitud.paciente.id }} {{ Solicitud.paciente.nombrepa }} {{ Solicitud.paciente.apellidoma}}</td>
-			<td>{% for Examenes in Solicitud.examenes.all %} {{ Examenes }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
-			<td>{{ Solicitud.fecha_sol }}</td>
+
+			<td>{{Resultado.paciente.id}}</td>
+			<td>{{Resultado.paciente.nombrepa}}</td>
+			<td>{{Resultado.examenes.nombre}}</td>
+			<td>{{Resultado.valores }}</td>
 			<td>
-				<a class = "btn btn-primary" href="{%  url 'Laboratorio:editar_solicitud' Solicitud.id %}"
+				<a class = "btn btn-primary" href="{%  url 'Laboratorio:editar_resultado' Resultado.id %}"
                >Editar</a>
             </td>
+
             <td>
-            <a class = "btn btn-danger" href="{%  url 'Laboratorio:eliminar_lista' Solicitud.id %}"
+            <a class = "btn btn-danger" href="{%  url 'Laboratorio:eliminar_resultado' Resultado.id %}"
             >Eliminar</a>
             </td>
 		</tr>
+
 		{% endfor %}
 
 		{% else %}

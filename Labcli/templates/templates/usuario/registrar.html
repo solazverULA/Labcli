@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+{% if request.user.not_authenticated %}
+
 <form method="post">
 	{% csrf_token %}
 
@@ -40,8 +43,7 @@
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="form-group">
-                <a class= "btn btn-default" href= "{% url 'Paciente:index'%}">Guardar</a>
-
+	<button class="btn btn-primary "type="submit">Guardar</button>
 
 
 			</div>
@@ -49,4 +51,10 @@
 	</div>
 
 </form>
+
+ {% else %}
+              <h3>Usted ya es un usuario registrado </h3>
+
+{%endif%}
+
 {% endblock %}

@@ -44,7 +44,6 @@ class Pago(models.Model):
     monto = models.IntegerField()
     paciente = models.ForeignKey(Paciente, null=True, blank=True, on_delete=models.CASCADE)
 
-
 class Examen(models.Model):
     nombre = models.CharField(max_length=50)
 #    resultado = models.ManyToManyField(Resultado)
@@ -52,13 +51,15 @@ class Examen(models.Model):
 
 
 class Resultado(models.Model):
-    nombre = models.CharField(max_length=50)
+    valores = models.CharField(max_length=50)
     examen = models.ManyToManyField(Examen)
+    examenes = models.ForeignKey(Examenes, null=True, blank=True, on_delete=models.CASCADE)
+    paciente = models.ForeignKey(Paciente, null=True, blank=True, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return '{}'.format(self.nombre)
 
 
 class Muestra(models.Model):
     nombre = models.CharField(max_length=50)
 
-    def __str__(self):
-        return '{}'.format(self.nombre)

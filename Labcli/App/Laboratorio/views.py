@@ -3,8 +3,8 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 # Create your views here.
 
-from App.Laboratorio.forms import SolicitudForm
-from App.Laboratorio.models import Solicitud
+from App.Laboratorio.forms import SolicitudForm,ResultadoForm
+from App.Laboratorio.models import Solicitud, Resultado
 
 from App.Paciente.forms import PacienteForm
 from App.Paciente.models import Paciente
@@ -26,6 +26,21 @@ class SolicitudCreate(CreateView):
     form_class = SolicitudForm
     template_name = 'templates/Laboratorio/solicitud_form.html'
     success_url = reverse_lazy('Laboratorio:ver_solicitud')
+
+
+
+class ResultadoCreate(CreateView):
+    model = Resultado
+    form_class = ResultadoForm
+    template_name = 'templates/Laboratorio/solicitud_form.html'
+    success_url = reverse_lazy('Laboratorio:ver_resultado')
+
+
+class ResultadoList(ListView):
+    model = Resultado
+    template_name = 'templates/Laboratorio/resultado_list.html'
+
+
 
 class SolicitudUpdate(UpdateView):
     model = Solicitud
@@ -66,3 +81,21 @@ class SolicitudDelete(DeleteView):
     model = Solicitud
     template_name = 'templates/Laboratorio/solicitud_delete.html'
     success_url = reverse_lazy('Laboratorio:ver_solicitud')
+
+
+class ResultadoDelete(DeleteView):
+    model = Resultado
+    template_name = 'templates/Laboratorio/resultado_delete.html'
+    success_url = reverse_lazy('Laboratorio:ver_resultado')
+
+
+
+class ResultadoUpdate(UpdateView):
+    model = Resultado
+    form_class = ResultadoForm
+    second_form_class = PacienteForm
+    second_model = Paciente
+    template_name = 'templates/Laboratorio/solicitud_form.html'
+    success_url = reverse_lazy('Laboratorio:ver_resultado')
+
+
