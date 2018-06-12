@@ -4,6 +4,8 @@ from __future__ import unicode_literals
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+from django.contrib.auth.models import PermissionsMixin
+
 
 class User(AbstractUser):
     is_bioanalista = models.BooleanField(default=False)
@@ -30,6 +32,13 @@ class User(AbstractUser):
 
     class Meta:
         db_table = 'auth_user'
+
+    @classmethod
+    def get_by_id(cls, uid):
+        return User.objects.get(pk=uid)
+
+    def __unicode__(self):
+        return self.email
 
 
 class BioanalistaProfile(models.Model):

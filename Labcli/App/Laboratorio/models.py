@@ -17,6 +17,11 @@ class Bioanalista(models.Model):
     telefono = 	models.CharField(max_length=12)
     domicilio = models.TextField()
 
+    def __str__(self):
+        return '{} {}'.format(self.nombre, self.apellidopa)
+
+
+
 
 
 class Asistente(models.Model):
@@ -37,6 +42,10 @@ class Solicitud(models.Model):
     paciente = models.ForeignKey(Paciente, null=True, blank=True, on_delete=models.CASCADE)
     asistente = models.ForeignKey(Asistente, null=True, blank=True, on_delete=models.CASCADE)
     examenes = models.ManyToManyField(Examenes)
+
+    def __str__(self):
+        return '{} {}'.format(self.paciente.nombrepa, self.paciente.apellidopa)
+
 
 
 class Pago(models.Model):
