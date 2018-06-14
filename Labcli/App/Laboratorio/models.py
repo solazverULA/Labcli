@@ -38,7 +38,7 @@ class Asistente(models.Model):
 
 
 class Solicitud(models.Model):
-    fecha_sol = models.DateField()
+    fecha_sol = models.DateField(help_text='Formato: 2018-01-01')
     paciente = models.ForeignKey(Paciente, null=True, blank=True, on_delete=models.CASCADE)
     asistente = models.ForeignKey(Asistente, null=True, blank=True, on_delete=models.CASCADE)
     examenes = models.ManyToManyField(Examenes)

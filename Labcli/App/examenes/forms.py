@@ -16,10 +16,10 @@ class ExamenForm(forms.ModelForm):
         ]
 
         labels = {
-            'nombre': 'Nombre',
+            'nombre': 'Nombre de Examen',
             'tipo': 'Tipo de examen',
-            'precio': 'Precio de examen',
-            'precio_laboratorio': 'Precio de laboratorio',
+            'precio': 'Valor de examen',
+            'precio_laboratorio': 'Precio de Examen',
             'stock': 'stock',
         }
 

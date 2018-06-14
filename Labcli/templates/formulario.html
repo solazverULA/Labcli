@@ -8,6 +8,11 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Labcli-Laboratorio clinico la inmaculada</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
+  <meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+
+
   <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,700" rel="stylesheet">
 
   <!-- Animate.css -->
@@ -22,7 +27,6 @@
   <!-- Magnific Popup -->
   <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
 
-  <!-- Owl Carousel  -->
   <!-- Owl Carousel  -->
   <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
@@ -93,30 +97,30 @@
 
       </div>
     </nav>
+
+      <div class="gtco-section">
           <div class="gtco-container">
               <div class="row">
-                      <h2>Registrar Paciente</h2>
-                  <div class="row">
-					<div class="col-md-3">
-                  {% if user.is_asistente %}
-                  <form method="post">
-				{% csrf_token %}
-				{{ form.as_p }}
-                      <a href="{% url 'usuario:registrar' %}" class="btn success">+ Registrar usuario</a>
-				<button type="submit">Guardar</button>
-
-                  </form>
-                  {% else %}
-                    <h3>Por favor inicie sesión para continuar. </h3>
-                    <a href="{% url 'login' %}" class = "button">Login</a></t>
-                {% endif %}
+                  <div class="col-md-8 col-md-offset-2 gtco-heading text-center">
+                      <div class="col-md-6">
+                          <!--FORMULARIO-->
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" name="continue">Sign up</button>
+                        </form>
                       </div>
                       </form>
                   </div>
               </div>
-                  </div>
-              </div>
           </div>
+      </div>
+  </div>
+  </div>
+  <div class="gototop js-top">
+      <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+  </div>
+
   <!-- jQuery -->
   <script src="{% static 'js/jquery.min.js' %}"></script>
   <!-- jQuery Easing -->

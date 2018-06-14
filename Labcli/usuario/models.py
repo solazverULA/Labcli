@@ -5,7 +5,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 from django.contrib.auth.models import PermissionsMixin
-
+from django.contrib.contenttypes.fields import GenericRelation
 
 class User(AbstractUser):
     is_bioanalista = models.BooleanField(default=False)
@@ -52,9 +52,10 @@ class PacienteProfile(models.Model):
     active = models.BooleanField(default=True)
     name = models.CharField(max_length=64)
 
+    def __str__(self):
+        return '{}'.format(self.user.username)
 
 class AsistenteProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     active = models.BooleanField(default=True)
     name = models.CharField(max_length=64)
-

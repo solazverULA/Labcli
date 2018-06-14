@@ -1,58 +1,162 @@
-{% extends 'base.html' %}
+{% load staticfiles %}
+<!DOCTYPE HTML>
+<!--
+  LABCLI
+-->
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Labcli-Laboratorio clinico la inmaculada</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,700" rel="stylesheet">
 
-{% block content %}
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+  <!-- Icomoon Icon Fonts-->
+  <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+  <!-- Themify Icons-->
+  <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+  <!-- Bootstrap  -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
 
-<form method="post">
-				{% csrf_token %}
-				{{ form.as_p }}
-				<button type="submit" name="continue">Sign up</button>
-</form>
+  <!-- Magnific Popup -->
+  <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
 
-<!--<
-<form method="post">
-	{% csrf_token %}
+  <!-- Owl Carousel  -->
+  <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
 
-    <div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="form-group">
-				<label >Nombre de usuario</label>
-				<input class="form-control" type="text" name="username">
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="form-group">
-				<label >Correo</label>
-				<input class="form-control" type="text" name="email">
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="form-group">
-				<label >Contraseña</label>
-				<input class="form-control" type="password" name="password1">
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="form-group">
-				<label >Confirmar contraseña</label>
-				<input class="form-control" type="password" name="password2">
-			</div>
-		</div>
-	</div>
+  <!-- Theme style  -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="form-group">
-				<input name="continue" type="submit" value="Login" />
-			</div>
-		</div>
-	</div>
+  <!-- Modernizr JS -->
+  <script src="{% static 'js/modernizr-2.6.2.min.js' %}"></script>
+  <!-- FOR IE9 below -->
+  <!--[if lt IE 9]>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
 
-</form>-->
+  </head>
+  <body>
 
-{% endblock %}
+  <div class="gtco-loader"></div>
+
+  <div id="page">
+
+    <nav class="gtco-nav" role="navigation">
+      <div class="gtco-container">
+
+        <div class="row">
+          <div class="col-sm-2 col-xs-12">
+            <div id="gtco-logo"><a href="index.html"><img src="{% static 'images/logo.png' %}" alt="Free HTML5 Website Template by FreeHTML5.co"></a></div>
+
+          </div>
+          <div class="col-xs-10 text-right menu-1">
+            <ul>
+              <li><a href="{% url 'home:home' %}">Home</a></li>
+              <li><a href="{% url 'Examenes:ver_lista' %}">Examenes</a></li>
+              <li class="has-dropdown">
+                <a href="{% url 'home:servicios' %}">Pacientes</a>
+                <ul class="dropdown">
+                    <li><a href="{% url 'Paciente:crear_paciente' %}">Crear Paciente</a></li>
+                    <li><a href="{% url 'Paciente:ver_lista' %}">Ver Lista de Paciente</a></li>
+                </ul>
+              </li>
+
+
+              <li class="has-dropdown">
+                <a href="{% url 'home:servicios' %}">Solicitud de Examen</a>
+                <ul class="dropdown">
+                    <li><a href="{% url 'Laboratorio:crear_solicitud' %}">Crear Solicitud</a></li>
+                    <li><a href="{% url 'Laboratorio:ver_solicitud' %}">Ver Solicitudes</a></li>
+                </ul>
+              </li>
+
+
+
+              <li class="has-dropdown">
+                <a href="{% url 'home:home' %}">Resultado de Examen</a>
+                <ul class="dropdown">
+                    <li><a href="{% url 'Laboratorio:crear_resultado' %}">Nuevo resultado</a></li>
+                    <li><a href="{% url 'Laboratorio:ver_resultado' %}">Ver resultados</a></li>
+                </ul>
+              </li>
+
+                <li><a href="{% url 'login' %}"></a></li>
+                <li><a href="{% url 'logout' %}">Salir</a></li>
+                <li><a href="{% url 'usuario:registrar' %}">Registrarse</a></li>
+
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+
+
+      <div class="gtco-section">
+          <div class="gtco-container">
+              <div class="row">
+                  <div class="col-md-10 col-md-offset-2 gtco-heading text-center">
+                      <h2>Registrar usuario</h2>
+                  </div>
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+
+                            <fieldset class="module aligned ">
+
+                            <div class="form-row field-is_bioanalista">
+                            <div class="checkbox-row">
+                                <input name="is_bioanalista" id="id_is_bioanalista" type="checkbox">
+                                <label class="vCheckboxLabel" for="id_is_bioanalista">Is bioanalista</label>
+                            </div>
+                            </div>
+
+                            <div class="form-row field-is_bioanalista">
+                            <div class="checkbox-row">
+                                <input name="is_asistente" id="id_is_asistente" type="checkbox">
+                                <label class="vCheckboxLabel" for="id_is_asistente">Is Asistente</label>
+                            </div>
+                            </div>
+
+                            <div class="form-row field-is_bioanalista">
+                            <div class="checkbox-row">
+                                <input name="is_paciente" id="id_is_paciente" type="checkbox">
+                                <label class="vCheckboxLabel" for="id_is_paciente">Is Paciente</label>
+                            </div>
+                            </div>
+                            </fieldset>
+                                <button type="submit" name="continue">Sign up</button>
+
+                        </form>
+                      </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
+  <div class="gototop js-top">
+      <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+  </div>
+
+  <!-- jQuery -->
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <!-- jQuery Easing -->
+  <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+  <!-- Bootstrap -->
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <!-- Waypoints -->
+  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+  <!-- Carousel -->
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <!-- Magnific Popup -->
+  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+  <script src=" {% static 'js/magnific-popup-options.js' %}"></script>
+  <!-- Main -->
+  <script src=" {% static 'js/main.js' %}"></script>
+
+  </body>
+</html>

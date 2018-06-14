@@ -3,6 +3,9 @@ from django.contrib.auth.decorators import login_required
 
 from App.Paciente.views import index, Paciente_view, Paciente_list, PacienteList, PacienteCreate,\
     PacienteDelete, PacienteUpdate
+
+
+from App.Paciente.models import Paciente
 app_name = 'App'
 
 urlpatterns = [

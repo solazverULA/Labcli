@@ -9,12 +9,13 @@
 	<thead>
 		<tr>
 			<td>#</td>
+			<td>Cedula</td>
 			<td>Nombre</td>
-            <td>Apellido Materno</td>
+            <td>Apellido</td>
 			<td>Sexo</td>
-			<td>Edad</td>
 			<td>Fecha de nacimiento</td>
-			<td>Acciones</td>
+			<td>user</td>
+
 		</tr>
 
 	</thead>
@@ -22,12 +23,14 @@
 		{% if object_list %}
 		{% for Paciente in object_list %}
 		<tr>
-			<td>{{ Paciente.id }}</td>
+			<td>{{Paciente.id}}</td>
+			<td>{{Paciente.cedula}}</td>
 			<td>{{ Paciente.nombrepa }}</td>
-            <td>{{ Paciente.apellidoma }}</td>
+            <td>{{ Paciente.apellidopa }}</td>
 			<td>{{ Paciente.sexo }}</td>
-			<td>{{ Paciente.edad }}</td>
 			<td>{{ Paciente.fecha_nac }}</td>
+			<td>{{ Paciente.user.username }}</td>
+
             <td>
             <a class = "btn btn-primary" href="{%  url 'Paciente:editar_lista' Paciente.id %}"
                >Editar</a>

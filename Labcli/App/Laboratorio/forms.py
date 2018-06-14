@@ -5,48 +5,6 @@ from App.Paciente.models import Paciente
 
 
 
-class PacienteForm(forms.ModelForm):
-
-    class Meta:
-        model = Paciente
-
-        fields = [
-            'nombrepa',
-            'apellidoma',
-            'apellidopa',
-            'sexo',
-            'fecha_nac',
-            'edad',
-            'email',
-            'telefono',
-            'domicilio',
-        ]
-
-        labels = {
-            'nombrepa': 'Nombre',
-            'apellidoma': 'Apellido Materno',
-            'apellidopa': 'Apellido Paterno',
-            'sexo': 'Sexo',
-            'fecha_nac': 'Fecha nacimiento',
-            'edad': 'Edad',
-            'telefono': 'Telefono',
-            'email': 'Email',
-            'domicilio': 'Domicilio',
-        }
-
-
-        widgets = {
-            'nombrepa': forms.TextInput(attrs={'class':'form-control'}),
-            'apellidoma': forms.TextInput(attrs={'class':'form-control'}),
-            'apellidopa': forms.TextInput(attrs={'class':'form-control'}),
-            'sexo': forms.TextInput(attrs={'class':'form-control'}),
-            'fecha_nac': forms.TextInput(attrs={'class':'form-control'}),
-            'edad': forms.TextInput(attrs={'class':'form-control'}),
-            'telefono': forms.TextInput(attrs={'class':'form-control'}),
-            'email': forms.TextInput(attrs={'class':'form-control'}),
-            'domicilio': forms.Textarea(attrs={'class':'form-control'}),
-        }
-
 
 class SolicitudForm(forms.ModelForm):
     class Meta:
@@ -62,7 +20,7 @@ class SolicitudForm(forms.ModelForm):
         labels = {
             'fecha_sol': 'Fecha Solicitud',
             'paciente': 'Paciente',
-            'examenes': 'Examen'
+            'examenes': 'Examen',
             }
 
 
@@ -70,7 +28,7 @@ class SolicitudForm(forms.ModelForm):
         widgets = {
             'fecha_sol': forms.TextInput(attrs={'class': 'form-control'}),
             'paciente': forms.Select(attrs={'class':'form-control'}),
-            'examenes':forms.CheckboxSelectMultiple(),
+            'examenes': forms.CheckboxSelectMultiple(),
             }
 
 
