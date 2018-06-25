@@ -12,13 +12,15 @@ class ExamenForm(forms.ModelForm):
             'tipo',
             'precio',
             'precio_laboratorio',
+            'rango',
         ]
 
         labels = {
             'nombre': 'Nombre de Examen',
             'tipo': 'Tipo de examen',
-            'precio': 'Valor de examen',
-            'precio_laboratorio': 'Precio de Examen',
+            'precio': 'Precio de Examen',
+            'precio_laboratorio': 'Valor de examen',
+            'rango': 'Rango de examen'
         }
 
 
@@ -26,4 +28,6 @@ class ExamenForm(forms.ModelForm):
             'nombre': forms.TextInput(attrs={'class':'form-control'}),
             'precio': forms.TextInput(attrs={'class':'form-control'}),
             'precio_laboratorio': forms.TextInput(attrs={'class':'form-control'}),
+            'rango': forms.TextInput(attrs={'class': 'form-control'}),
+
         }

@@ -15,8 +15,10 @@ class Examenes(models.Model):
 
 	nombre = models.CharField(max_length=200, unique=True)
 	tipo = models.CharField(choices=TIPO, max_length=30)
-	precio = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
-	precio_laboratorio = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
+	precio = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+	precio_laboratorio = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+	rango = models.CharField(max_length=50, null=True, blank=True)
+
 
 	def __unicode__(self):
 		return self.nombre

@@ -32,8 +32,17 @@ class ExamenCreate(CreateView):
 class ExamenList(ListView):
     model = Examenes
     template_name = 'templates/Examenes/examenes_list.html'
-    paginate_by = 2
+    #paginate_by = 2
 
 
+#class PacienteUpdate(UpdateView):
+#    model = Paciente
+#    form_class = PacienteForm
+#    template_name = 'templates/Paciente/paciente_form.html'
+#    success_url = reverse_lazy('Paciente:ver_lista')
 
+#class PacienteDelete(DeleteView):
+#    model = Paciente
+#    template_name = 'templates/Paciente/paciente_delete2.html'
+#   success_url = reverse_lazy('Paciente:ver_lista')
 

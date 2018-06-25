@@ -1277,3 +1277,8 @@ JavaScript warning: https://code.jquery.com/jquery-1.10.2.min.js, line 1: Using 
 1528768494049	Marionette	WARN	TLS certificate errors will be ignored for this session
 JavaScript warning: https://code.jquery.com/jquery-1.10.2.min.js, line 1: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
 JavaScript warning: https://code.jquery.com/jquery-1.10.2.min.js, line 1: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1529936084598	geckodriver	INFO	geckodriver 0.20.0
+1529936084669	geckodriver	INFO	Listening on 127.0.0.1:36435
+1529936087594	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.ghhEl7giiQV5"
+1529936101182	Marionette	INFO	Listening on port 44305
+1529936101312	Marionette	WARN	TLS certificate errors will be ignored for this session
