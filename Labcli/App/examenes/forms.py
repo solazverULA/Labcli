@@ -12,7 +12,6 @@ class ExamenForm(forms.ModelForm):
             'tipo',
             'precio',
             'precio_laboratorio',
-            'stock',
         ]
 
         labels = {
@@ -20,7 +19,6 @@ class ExamenForm(forms.ModelForm):
             'tipo': 'Tipo de examen',
             'precio': 'Valor de examen',
             'precio_laboratorio': 'Precio de Examen',
-            'stock': 'stock',
         }
 
 
@@ -28,5 +26,4 @@ class ExamenForm(forms.ModelForm):
             'nombre': forms.TextInput(attrs={'class':'form-control'}),
             'precio': forms.TextInput(attrs={'class':'form-control'}),
             'precio_laboratorio': forms.TextInput(attrs={'class':'form-control'}),
-            'stock': forms.TextInput(attrs={'class':'form-control'}),
-         }
+        }

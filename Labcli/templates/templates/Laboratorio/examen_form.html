@@ -11,6 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
   <meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+  <meta name="author" content="FreeHTML5.co" />
 
 
   <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,700" rel="stylesheet">
@@ -53,7 +54,8 @@
 
         <div class="row">
           <div class="col-sm-2 col-xs-12">
-            <div id="gtco-logo"><a href="index.html"><img src="{% static 'images/logo.png' %}"></a></div>
+            <div id="gtco-logo"><a href="index.html"><img src="{% static 'images/logo.png' %}" alt="Free HTML5 Website Template by FreeHTML5.co"></a></div>
+
           </div>
           <div class="col-xs-10 text-right menu-1">
             <ul>
@@ -75,6 +77,9 @@
                     <li><a href="{% url 'Laboratorio:ver_solicitud' %}">Ver Solicitudes</a></li>
                 </ul>
               </li>
+
+
+
               <li class="has-dropdown">
                 <a href="{% url 'home:home' %}">Resultado de Examen</a>
                 <ul class="dropdown">
@@ -86,9 +91,11 @@
                 <li><a href="{% url 'login' %}"></a></li>
                 <li><a href="{% url 'logout' %}">Salir</a></li>
                 <li><a href="{% url 'usuario:registrar' %}">Registrarse</a></li>
+
             </ul>
           </div>
         </div>
+
       </div>
     </nav>
 
@@ -96,22 +103,24 @@
           <div class="gtco-container">
               <div class="row">
                   <div class="col-md-8 col-md-offset-2 gtco-heading text-center">
-                      <h2>Crear solicitud de Examen</h2>
-                  </div>
                       <div class="col-md-6">
-                            <form method="post">
-                                {% csrf_token %}
-                                {{ form.as_p }}
+                          {% if user.is_asistente %}
+                          <form method="post">
+                              {% csrf_token %}
+                              {{ form.as_p }}
+                              <a id="add id_list" href="#">Agregar</a>
+                              <button type="submit">guardar</button>
+                          </form>
 
-                              <button type="submit" class="btn btn btn-special" >guardar</button>
-                            </form>
+                          {% else %}
+                          <h3>Acceso denegado, inicie sesión como Asistente o Bioanalista </h3>
+                          <a href="{% url 'login' %}" class = "button">Login</a></td>
+                          {% endif %}
                       </div>
-                      </form>
                   </div>
               </div>
           </div>
       </div>
-  </div>
   </div>
   <div class="gototop js-top">
       <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>

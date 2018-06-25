@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+<section>
+
+{% if user.is_asistente %}
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<td>Id</td>
+			<td>Paciente</td>
+			<td>Examenes</td>
+			<td>  Valores</td>
+
+
+		</tr>
+
+	</thead>
+	<tbody>
+		{% if object_list %}
+		{% for Detalle_examen in object_list %}
+		<tr>
+ 	<td>{{ Detalle_examen.resultadodat.id }}</td>
+			<td>{{ Detalle_examen.resultadodat.paciente.nombrepa }}
+				{{ Detalle_examen.resultadodat.paciente.apellidopa }} </td>
+			<td>{{ Detalle_examen.examenes }}</td>
+			<td>{{ Detalle_examen.valores }}</td>
+
+
+		</tr>
+
+		{% endfor %}
+
+		{% else %}
+		<h1>No hay registros de solicitudes</h1>
+		{% endif %}
+	</tbody>
+</table>
+
+ {% else %}
+              <h3>Por favor inicie sesión para continuar. </h3>
+              <a href="{% url 'login' %}" class = "button">Login</a></td>
+{% endif %}
+</section>
+
+{% endblock %}

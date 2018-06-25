@@ -33,3 +33,7 @@ class ExamenList(ListView):
     model = Examenes
     template_name = 'templates/Examenes/examenes_list.html'
     paginate_by = 2
+
+
+
+

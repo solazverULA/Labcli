@@ -17,7 +17,6 @@ class Examenes(models.Model):
 	tipo = models.CharField(choices=TIPO, max_length=30)
 	precio = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
 	precio_laboratorio = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
-	stock = models.PositiveSmallIntegerField()
 
 	def __unicode__(self):
 		return self.nombre
