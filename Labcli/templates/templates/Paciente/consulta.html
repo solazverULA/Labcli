@@ -1,0 +1,41 @@
+<html>
+<head>
+
+<title> Inicio</title>
+
+</head>
+<br>
+<body>
+<h1> Datos Paciente</h1>
+{%for obj in obj%}
+    <h4>{{obj.user}}</h4>
+    <h4>{{obj.cedula}}</h4>
+    <table class="table table-bordered">
+                            <thead>
+                              <tr>
+                                <td>#</td>
+                                <td>Cedula</td>
+                                <td>Nombre</td>
+                                      <td>Apellido</td>
+                                <td>Sexo</td>
+                                <td>Fecha de nacimiento</td>
+                                <td>user</td>
+
+                              </tr>
+
+                            </thead>
+                              <tr>
+                                <td>{{obj.id}}</td>
+                                <td>{{obj.cedula}}</td>
+                                <td>{{ obj.nombrepa }}</td>
+                                      <td>{{ obj.apellidopa }}</td>
+                                <td>{{ obj.sexo }}</td>
+                                <td>{{ obj.fecha_nac }}</td>
+                                <td>{{ obj.user.username }}</td>
+
+                                      <td>
+
+
+{%endfor%}
+</body>
+</html>

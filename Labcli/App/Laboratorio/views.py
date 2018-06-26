@@ -4,6 +4,9 @@ from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 from django.db import transaction
 # Create your views here.
 
+from django.shortcuts import render
+from django.db.models import Sum
+
 from App.Laboratorio.forms import SolicitudForm
 from App.Laboratorio.forms import Detalle_examenFormSet, Detalle_examenForm
 
@@ -16,6 +19,8 @@ from App.examenes.forms import ExamenForm
 
 from django.forms.formsets import formset_factory, BaseFormSet
 
+from django.template.response import TemplateResponse
+
 def index_lab(request):
     return HttpResponse("Laboratorio")
 
@@ -24,6 +29,8 @@ def index_lab(request):
 #Solicitud Examen
 #Solicitud Examen
 
+
+
 class SolicitudList(ListView):
     model = Solicitud
     template_name = 'templates/Laboratorio/solicitud_list.html'
@@ -31,6 +38,8 @@ class SolicitudList(ListView):
 
 class SolicitudCreate(CreateView):
     model = Solicitud
+  #  Solicitud.objects.all().aggregate(Sum('Solicitud.examenes.precio_lab'))
+# Solicitud.objects.aggregate(Sum('examenes'))
     form_class = SolicitudForm
     template_name = 'templates/Laboratorio/solicitud_form.html'
     success_url = reverse_lazy('Laboratorio:ver_solicitud')
@@ -78,12 +87,19 @@ class SolicitudDelete(DeleteView):
 
 
 
+class SolicitudUpdate2(UpdateView):
+    model = Solicitud
+    form_class = SolicitudForm
+    template_name = 'templates/Laboratorio/solicitud_form.html'
+    success_url = reverse_lazy('Laboratorio:ver_solicitud')
+
+
 
 # Resultado Examenes
 # Resultado Examenes
 class Detalle_examenCreate(CreateView):
     model = ResultadoDat
-    fields = ['paciente']
+    fields = ['paciente','solicitud']
     success_url = reverse_lazy('Laboratorio:ver_resultados_examen')
 
     def get_context_data(self, **kwargs):
@@ -113,7 +129,6 @@ class Detalle_examen_List(ListView):
     template_name = 'templates/Laboratorio/resultado_list_examenes.html'
 
 
-
 class Detalle_examen_Update(UpdateView):
     model = Detalle_examen
     form_class = Detalle_examenForm
@@ -124,3 +139,11 @@ class Detalle_examen_Delete(DeleteView):
     model = Detalle_examen
     template_name = 'templates/Laboratorio/resultado_examen_delete.html'
     success_url = reverse_lazy('Laboratorio:ver_resultados_examen')
+
+
+def index2(request):
+    obj = Detalle_examen.objects.filter(resultadodat__paciente__user=request.user).order_by('-fecharesultado')
+    context = {
+        "obj": obj,
+       }
+    return render(request, "templates/Laboratorio/consulta2.html", context)

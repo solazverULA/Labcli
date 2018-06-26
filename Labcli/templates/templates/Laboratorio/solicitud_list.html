@@ -99,18 +99,18 @@
     </nav>
           <div class="gtco-container">
               <div class="row">
-                  <div class="col-md-12 col-md-offset-2 gtco-heading text-center">
-                      <div class="col-md-8">
+                  <div class="col-md-20 col-md-offset-2 gtco-heading text-center">
+                      <div class="col-md-18">
                           <!--FORMULARIO-->
 
                             <section>
 
-                            {% if user.is_asistente %}
+                            {% if user.is_asistente or user.is_bioanalista %}
 
                             <table class="table table-bordered">
                               <thead>
                                 <tr>
-
+                                    <td>Id Solicitud</td>
                                   <td>Paciente </td>
                                   <td>Examen </td>
                                   <td>Fecha Solicitud</td>
@@ -121,11 +121,14 @@
                                 {% if object_list %}
                                 {% for Solicitud in object_list %}
                                 <tr>
+                                    <td>{{ Solicitud.id }}
                                   <td>{{ Solicitud.paciente.id }} {{ Solicitud.paciente.nombrepa }} {{ Solicitud.paciente.apellidoma}}</td>
                                   <td>{% for Examenes in Solicitud.examenes.all %} {{ Examenes }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
                                   <td>{{ Solicitud.fecha_sol }}</td>
+                                    <td>{{Solicitud.pagado}} </td>
+
                                   <td>
-                                    <a class = "btn btn " href="{%  url 'Laboratorio:editar_solicitud' Solicitud.id %}"
+                                    <a class = "btn btn " href="{%  url 'Laboratorio:editar_solicitud2' Solicitud.id %}"
                                            >Editar</a>
                                         </td>
                                         <td>

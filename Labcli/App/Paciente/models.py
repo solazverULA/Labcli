@@ -19,6 +19,7 @@ Sexo = (
 
 
 
+
 class Paciente(models.Model):
     cedula = models.CharField(
         max_length=11,
@@ -33,13 +34,10 @@ class Paciente(models.Model):
     apellidoma = models.CharField(max_length=30)
     sexo = models.CharField(max_length=1, choices=Sexo)
     fecha_nac = models.DateField( help_text='Formato: 2018-01-01')
-    telefono = models.PositiveIntegerField()
+    telefono = models.CharField(max_length=11)
     domicilio = models.TextField()
     user  = models.OneToOneField(User, unique=True, on_delete=models.CASCADE)
 
     def __str__(self):
-        return '{} {}'.format(self.nombrepa, self.apellidopa)
+        return '{} {} {}'.format(self.nombrepa, self.apellidopa, self.user)
 
-
-   # def edad(self):
-   #     return int((datetime.now().date() - self.fechanaciomiento).days / 365.25)

@@ -8,6 +8,11 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Labcli-Laboratorio clinico la inmaculada</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
+  <meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+
+
   <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,700" rel="stylesheet">
 
   <!-- Animate.css -->
@@ -82,7 +87,7 @@
                 </ul>
               </li>
 
-                <li><a href="{% url 'login' %}"></a>Login</li>
+                <li><a href="{% url 'login' %}"></a></li>
                 <li><a href="{% url 'logout' %}">Salir</a></li>
                 <li><a href="{% url 'usuario:registrar' %}">Registrarse</a></li>
 
@@ -94,51 +99,45 @@
     </nav>
 
 
-      <div class="gtco-section">
-          <div class="gtco-container">
-              <div class="row">
-                  <div class="col-md-10 col-md-offset-2 gtco-heading text-center">
-                      <h2>Registrar usuario</h2>
-                  </div>
-                        <form method="post">
+		<header id="gtco-header" class="gtco-cover gtco-cover-xs gtco-inner" role="banner">
+			<div class="gtco-container">
+				<div class="row">
+					<div class="col-md-18 col-md-offset-0 text-left">
+						<div class="display-t">
+							<div class="display-tc">
+								<div class="row">
+									<div class="col-md-16 animate-box">
 
-                            {% csrf_token %}
-                            {{ form.as_p }}
+                        {% if user.is_authenticated %}
+                       <h1> Resultados de examenes</h1>
+                            {%for obj in obj%}
+                                {% if obj.resultadodat.solicitud.pagado == True %}
+                        <td><h3>Resultado de examen: {{obj.resultadodat_id}} {{obj.fecharesultado}} {{obj.examenes.nombre}} {{obj.valores}}</h3></td>
 
-                            <fieldset class="module aligned ">
+                                {% else %}
+                                    <td><h3>Usted no pagó el examen: {{obj.examenes.nombre}}, que se realizó el mes/dia/año: {{obj.fecharesultado}},
+                                        pague para obtener el resultado.</h3></td>
+                                {%endif%}
+                            {%endfor%}
+                          </thead>
 
-                            <div class="form-row field-is_bioanalista">
-                            <div class="checkbox-row">
-                                <input name="is_bioanalista" id="id_is_bioanalista" type="checkbox">
-                                <label class="vCheckboxLabel" for="id_is_bioanalista">Is bioanalista</label>
-                            </div>
-                            </div>
+                            {% else %}
+                                      <h3>Por favor inicie sesión para continuar. </h3>
+                                      <a href="{% url 'login' %}" class = "button">Login</a></td>
+                        {% endif %}
+                        </section>
+                            </section>
 
-                            <div class="form-row field-is_bioanalista">
-                            <div class="checkbox-row">
-                                <input name="is_asistente" id="id_is_asistente" type="checkbox">
-                                <label class="vCheckboxLabel" for="id_is_asistente">Is Asistente</label>
-                            </div>
-                            </div>
-
-                            <div class="form-row field-is_bioanalista">
-                            <div class="checkbox-row">
-                                <input name="is_paciente" id="id_is_paciente" type="checkbox">
-                                <label class="vCheckboxLabel" for="id_is_paciente">Is Paciente</label>
-                            </div>
-                            </div>
-                            </fieldset>
-                                <button type="submit" name="continue">Sign up</button>
-
-                        </form>
                       </div>
-                      </form>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  </div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+
   <div class="gototop js-top">
       <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
   </div>

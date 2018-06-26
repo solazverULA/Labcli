@@ -11,6 +11,8 @@ class Examenes(models.Model):
 	TIPO = (
         ('hematologia', 'Hematologia'),
         ('orina', 'Orina'),
+		('Quimica Sanguinea', 'quimica sanguinea'),
+		('Hormonas','hormonas'),
     )
 
 	nombre = models.CharField(max_length=200, unique=True)
@@ -24,4 +26,4 @@ class Examenes(models.Model):
 		return self.nombre
 
 	def __str__(self):
-		return '{}'.format(self.nombre)
+		return 'nombre: {} Rango: {}'.format(self.nombre, self.rango)

@@ -139,7 +139,7 @@
         </table>
 
              <input type="submit" value="Save"/>
-            <a href="{% url 'Laboratorio:ver_resultados_examen' %}">
+            <a href="{% url 'Laboratorio:ver_solicitud' %}">
         Lista de Resultados</a>
 
 
@@ -156,7 +156,6 @@
 
 <script type="text/javascript">
     $('.formset_row').formset({
-        addText: 'add',
         deleteText: 'remove',
         prefix: 'Detalle_examen_set'
     });

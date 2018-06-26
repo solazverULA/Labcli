@@ -71,3 +71,12 @@ class PacienteDelete(DeleteView):
     model = Paciente
     template_name = 'templates/Paciente/paciente_delete2.html'
     success_url = reverse_lazy('Paciente:ver_lista')
+
+
+def index2(request):
+    obj = Paciente.objects.filter(user=request.user)
+
+    context = {
+        "obj": obj,
+    }
+    return render(request, "templates/Paciente/consulta.html", context)

@@ -35,14 +35,14 @@ class ExamenList(ListView):
     #paginate_by = 2
 
 
-#class PacienteUpdate(UpdateView):
-#    model = Paciente
-#    form_class = PacienteForm
-#    template_name = 'templates/Paciente/paciente_form.html'
-#    success_url = reverse_lazy('Paciente:ver_lista')
+class ExamenUpdate(UpdateView):
+    model = Examenes
+    form_class = ExamenForm
+    template_name = 'templates/Examenes/examenes_form.html'
+    success_url = reverse_lazy('Examenes:ver_lista')
 
-#class PacienteDelete(DeleteView):
-#    model = Paciente
-#    template_name = 'templates/Paciente/paciente_delete2.html'
-#   success_url = reverse_lazy('Paciente:ver_lista')
+class ExamenDelete(DeleteView):
+    model = Examenes
+    template_name = 'templates/Examenes/examen_delete.html'
+    success_url = reverse_lazy('Examenes:ver_lista')
 

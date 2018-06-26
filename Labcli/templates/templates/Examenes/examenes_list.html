@@ -61,10 +61,10 @@
               <li><a href="{% url 'home:home' %}">Home</a></li>
               <li><a href="{% url 'Examenes:ver_lista' %}">Examenes</a></li>
               <li class="has-dropdown">
-                <a href="{% url 'home:servicios' %}">Pacientes</a>
+                <a href="{% url 'home:servicios' %}">Personas</a>
                 <ul class="dropdown">
-                    <li><a href="{% url 'Paciente:crear_paciente' %}">Crear Paciente</a></li>
-                    <li><a href="{% url 'Paciente:ver_lista' %}">Ver Lista de Paciente</a></li>
+                    <li><a href="{% url 'Paciente:crear_paciente' %}">Registrar Persona</a></li>
+                    <li><a href="{% url 'Paciente:ver_lista' %}">Ver Lista de Personas Registradas</a></li>
                 </ul>
               </li>
 
@@ -87,6 +87,16 @@
                 </ul>
               </li>
 
+
+
+                              <li class="has-dropdown">
+                <a href="{% url 'home:home' %}">Examenes</a>
+                <ul class="dropdown">
+                    <li><a href="{% url 'Examenes:crear_examen' %}">Nuevo examen</a></li>
+                    <li><a href="{% url 'Examenes:ver_lista' %}">Ver lista de examenes</a></li>
+                </ul>
+              </li>
+
                 <li><a href="{% url 'login' %}"></a></li>
                 <li><a href="{% url 'logout' %}">Salir</a></li>
                 <li><a href="{% url 'usuario:registrar' %}">Registrarse</a></li>
@@ -102,7 +112,6 @@
                   <div class="col-md-12 col-md-offset-2 gtco-heading text-center">
                       <div class="col-md-8">
 
-						{% if user.is_asistente %}
 						<table class="table table-bordered">
 						  <thead>
 							<tr>
@@ -123,6 +132,15 @@
 							  <td>{{ Examenes.precio }}</td>
 							  <td>{{ Examenes.precio_laboratorio }}</td>
 							  <td>{{ Examenes.rango }}</td>
+
+                                  <td>
+                                    <a class = "btn btn " href="{%  url 'Examenes:editar_examen' Examenes.id %}"
+                                           >Editar</a>
+                                        </td>
+                                        <td>
+                                        <a class = "btn btn" href="{%  url 'Examenes:eliminar_examen' Examenes.id %}"
+                                        >Eliminar</a>
+                                        </td>
 
 							</tr>
 							{% endfor %}
@@ -145,11 +163,6 @@
 							</li>
 						</ul>
 
-						 {% else %}
-									  <h3>Por favor inicie sesión para continuar. </h3>
-									  <a href="{% url 'login' %}" class = "button">Login</a></td>
-						{% endif %}
-                      </div>
 
                       </form>
                   </div>

@@ -5,7 +5,8 @@ from django.db import models
 from App.Paciente.models import Paciente
 from App.examenes.models import Examenes
 
-#from __future__ import unicode_literals
+from django.db.models import Sum
+
 
 class Bioanalista(models.Model):
    # IdBioanalista = models.CharField(primary_key=True)
@@ -42,16 +43,19 @@ class Solicitud(models.Model):
     paciente = models.ForeignKey(Paciente, null=True, blank=True, on_delete=models.CASCADE)
     asistente = models.ForeignKey(Asistente, null=True, blank=True, on_delete=models.CASCADE)
     examenes = models.ManyToManyField(Examenes)
-    #fecha_solicitud = models.DateField(auto_now_add=True, null=True, blank=True)
+    pagado = models.BooleanField(default=False)
+
     def __str__(self):
-        return '{} {}'.format(self.paciente.nombrepa, self.paciente.apellidopa)
+        return 'Id Solicitud: {} Datos:{} {}  Pago: {} '.format(self.id, self.paciente.nombrepa,
+                                                           self.paciente.apellidopa, self.pagado)
 
 class ResultadoDat(models.Model):
     paciente = models.ForeignKey(Paciente, null=True, blank=True, on_delete=models.CASCADE)
+    solicitud  = models.ForeignKey(Solicitud, null=True, blank=True, on_delete=models.CASCADE)
     fecha = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return '{}'.format(self.paciente.nombrepa, self.paciente.apellidopa)
+        return '{}'.format(self.solicitud.pagado)
 
 
 class Detalle_examen(models.Model):
@@ -59,7 +63,9 @@ class Detalle_examen(models.Model):
     examenes = models.ForeignKey(Examenes, null=True, blank=True, on_delete=models.CASCADE)
     valores=models.CharField(max_length=100)
     fecharesultado = models.DateField(auto_now_add=True, null=True, blank=True)
+    validacion = models.BooleanField(default=False)
 
 
     def __str__(self):
-        return '{}{}{}'.format(self.paciente.nombrepa, self.paciente.apellidopa, self.examenes.nombre, self.resultadodat.id)
+        return '{} {} {} {} {}'.format(self.examenes.nombre, self.examenes.rango, self.resultadodat.paciente.nombrepa,
+                             self.resultadodat.paciente.apellidopa, self.resultadodat.id)

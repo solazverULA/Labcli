@@ -103,7 +103,7 @@
                   <div class="col-md-12 col-md-offset-2 gtco-heading text-center">
                       <div class="col-md-10">
                           <!--FORMULARIO-->
-                          {% if user.is_asistente %}
+                          {% if user.is_asistente or user.is_bioanalista %}
                           <table class="table table-bordered">
                             <thead>
                               <tr>
@@ -121,6 +121,7 @@
                             <tbody>
                               {% if object_list %}
                               {% for Paciente in object_list %}
+
                               <tr>
                                 <td>{{Paciente.id}}</td>
                                 <td>{{Paciente.cedula}}</td>

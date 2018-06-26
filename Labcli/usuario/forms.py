@@ -15,11 +15,17 @@ class RegistroForm(UserCreationForm):
         fields = [
             'username',
             'email',
+            'is_bioanalista',
+             'is_asistente',
+            'is_paciente'
         ]
 
         labels = {
             'username': 'Nombre de usuario',
             'email': 'Correo',
+            'is_bioanalista':'Bioanalista',
+            'is_asistente': 'Asistente',
+            'is_paciente': 'Paciente',
         }
 
 

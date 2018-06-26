@@ -143,7 +143,7 @@ STATICFILES_DIRS = (
 )
 
 
-LOGIN_REDIRECT_URL = reverse_lazy('Laboratorio:ver_solicitud')
+LOGIN_REDIRECT_URL = reverse_lazy('home:home')
 LOGOUT_REDIRECT_URL = reverse_lazy('login')
 
 

@@ -19,14 +19,14 @@ class SolicitudForm(forms.ModelForm):
         'fecha_sol',
         'paciente',
         'examenes',
-       # 'fecha_solicitud'
+        'pagado',
         ]
 
         labels = {
             'fecha_sol': 'Fecha Solicitud',
             'paciente': 'Paciente',
             'examenes': 'Examen',
-        #    'fecha_solicitud': 'Fecha de Solicitud'
+            'pagado': 'Pagado'
 
             }
 
@@ -36,7 +36,7 @@ class SolicitudForm(forms.ModelForm):
             'fecha_sol': forms.TextInput(attrs={'class': 'form-control'}),
             'paciente': forms.Select(attrs={'class':'form-control'}),
             'examenes': forms.CheckboxSelectMultiple(),
-            }
+        }
 
 
 class ResultadoDatForm(ModelForm):
@@ -54,4 +54,4 @@ class Detalle_examenForm(ModelForm):
 
 
 
-Detalle_examenFormSet = inlineformset_factory(ResultadoDat, Detalle_examen, form=Detalle_examenForm, extra=3)
+Detalle_examenFormSet = inlineformset_factory(ResultadoDat, Detalle_examen, form=Detalle_examenForm, extra=10)

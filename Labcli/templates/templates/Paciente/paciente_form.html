@@ -98,7 +98,7 @@
                       <h2>Registrar Paciente</h2>
                   <div class="row">
 					<div class="col-md-3">
-                  {% if user.is_asistente %}
+                  {% if user.is_asistente or user.is_bioanalista%}
                   <form method="post">
 				{% csrf_token %}
 				{{ form.as_p }}

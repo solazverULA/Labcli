@@ -99,12 +99,12 @@
     </nav>
           <div class="gtco-container">
               <div class="row">
-                  <div class="col-md-20 col-md-offset-2 gtco-heading text-center">
+                  <div class="col-md-24 col-md-offset-2 gtco-heading text-center">
                       <div class="col-md-22">
 
                         <section>
 
-                        {% if user.is_asistente %}
+                        {% if user.is_authenticated %}
 
                         <table class="table table-bordered">
                           <thead>
@@ -117,6 +117,9 @@
                               <td>Examenes</td>
                               <td>  Valores</td>
                                 <td>  Fecha</td>
+                                <td> solicitud </td>
+                                <td>validacion</td>
+
 
 
                             </tr>
@@ -124,23 +127,23 @@
                           </thead>
                           <tbody>
                             {% if object_list %}
-                            {% for Detalle_examen in object_list %}
+							{% for Detalle_examen in object_list %}
                             <tr>
                           <td>{{ Detalle_examen.resultadodat.id }}</td>
                               <td>{{ Detalle_examen.resultadodat.paciente.cedula}}</td>
                               <td>{{ Detalle_examen.resultadodat.paciente.user}}</td>
-
                               <td>{{ Detalle_examen.resultadodat.paciente.nombrepa }}
                                 {{ Detalle_examen.resultadodat.paciente.apellidopa }} </td>
                               <td>{{ Detalle_examen.examenes }}</td>
                               <td>{{ Detalle_examen.valores }}</td>
                                 <td>{{ Detalle_examen.fecharesultado }}</td>
+                                <td>{{ Detalle_examen.resultadodat.solicitud.pagado}}</td>
 
+                                {% if user.is_bioanalista %}
+                                <td>{{Detalle_examen.validacion}}</td>
+                                {%endif%}
 
                                 <td>
-                                    <a class = "btn btn " href="{%  url 'Laboratorio:editar_resultado_examen' Detalle_examen.id %}"
-                                    >Editar</a>
-									  </td>
                                 <td>
                                     <a class = "btn btn " href="{%  url 'Laboratorio:eliminar_resultado_examen' Detalle_examen.id %}"
                                     >Eliminar</a>
@@ -150,13 +153,13 @@
                             {% endfor %}
 
                             {% else %}
-                            <h1>No hay registros de solicitudes</h1>
+                            <h1>No hay registros de Examenes</h1>
                             {% endif %}
                           </tbody>
                         </table>
 
                          {% else %}
-                                      <h3>Por favor inicie sesión para continuar. </h3>
+                                      <h3>Por favor inicie sesión como asistente o bioanalista para continuar. </h3>
                                       <a href="{% url 'login' %}" class = "button">Login</a></td>
                         {% endif %}
                         </section>
