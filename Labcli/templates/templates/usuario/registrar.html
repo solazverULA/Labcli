@@ -101,6 +101,7 @@
                       <h2>Registrar usuario</h2>
                   </div>
                         <form method="post">
+            {% if user.is_asistente or user.is_bioanalista %}
 
                             {% csrf_token %}
                             {{ form.as_p }}
@@ -129,6 +130,12 @@
                             </div>
                             </fieldset>
                                 <button type="submit" name="continue">Sign up</button>
+
+
+                            {% else %}
+                                      <h3>Por favor inicie sesión como asistente o bioanalista para continuar. </h3>
+                                      <a href="{% url 'login' %}" class = "button">Login</a></td>
+                        {% endif %}
 
                         </form>
                       </div>

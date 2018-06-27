@@ -106,6 +106,8 @@
     <hr>
     <div class="col-md-4">
         <form action="" method="post">{% csrf_token %}
+            {% if user.is_asistente or user.is_bioanalista %}
+
             {{ form.as_p }}
 
         <table class="table">
@@ -142,7 +144,10 @@
             <a href="{% url 'Laboratorio:ver_solicitud' %}">
         Lista de Resultados</a>
 
-
+                          {% else %}
+                            <h3>Por favor inicie sesión como asistente o bioanalista para continuar. </h3>
+                            <a href="{% url 'login' %}" class = "button">Login</a></td>
+                        {% endif %}
         <!--    <button type="submit">guardar</button> -->
 
     </form>

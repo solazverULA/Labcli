@@ -103,8 +103,8 @@
                       <div class="col-md-22">
 
                         <section>
+                            {% if user.is_asistente or user.is_bioanalista %}
 
-                        {% if user.is_authenticated %}
 
                         <table class="table table-bordered">
                           <thead>

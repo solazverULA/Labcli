@@ -1282,3 +1282,16 @@ JavaScript warning: https://code.jquery.com/jquery-1.10.2.min.js, line 1: Using 
 1529936087594	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.ghhEl7giiQV5"
 1529936101182	Marionette	INFO	Listening on port 44305
 1529936101312	Marionette	WARN	TLS certificate errors will be ignored for this session
+1530074790129	geckodriver	INFO	geckodriver 0.20.0
+1530074790195	geckodriver	INFO	Listening on 127.0.0.1:38851
+1530074791216	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.YXVJenRJtdSt"
+1530074796708	Marionette	INFO	Listening on port 40361
+1530074796759	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1530074860444	geckodriver	INFO	geckodriver 0.20.0
+1530074860456	geckodriver	INFO	Listening on 127.0.0.1:34181
+1530074861546	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.ZviFimUjitam"
+1530074866459	Marionette	INFO	Listening on port 33053
+1530074866530	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1530074870830	geckodriver::marionette	ERROR	Failed to stop browser process
